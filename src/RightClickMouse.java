@@ -1,31 +1,24 @@
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-@SuppressWarnings("WeakerAccess")
 public class RightClickMouse extends MouseAdapter {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
     private final WorldBoard worldBoard;
 
-    public RightClickMouse(WorldBoard worldBoard) {
+    public RightClickMouse(int x, int y, WorldBoard worldBoard) {
+        this.x = x;
+        this.y = y;
         this.worldBoard = worldBoard;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
     @Override
-    public void mouseClicked(MouseEvent event) {
-        if (MouseEvent.BUTTON3 == event.getButton()) {
-            this.setX(event.getX());
-            this.setY(event.getY());
+    public void mouseClicked(MouseEvent e) {
+        if (MouseEvent.BUTTON3 == e.getButton()) {
+            System.out.println("BUTTON3: x=" + e.getX() + " y=" + e.getY());
+            System.out.println("RightClickMouse: x=" + x + " y=" + y);
             ContextMenu contextMenu = new ContextMenu(x, y, worldBoard);
-            contextMenu.show(event.getComponent(), x, y);
+            contextMenu.show(e.getComponent(), e.getX(), e.getY());
         }
     }
 }

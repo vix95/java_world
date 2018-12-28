@@ -16,8 +16,18 @@ public class NewOrganism implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent event) {
+    public void actionPerformed(ActionEvent e) {
         worldBoard.addOrganism(name, new Coordinates(x, y));
         worldBoard.drawWorld();
+        System.out.println("Create " + this);
+    }
+
+    @Override
+    public String toString() {
+        return "NewOrganism{" +
+                "name='" + name + '\'' +
+                ", x=" + x +
+                ", y=" + y +
+                '}';
     }
 }
