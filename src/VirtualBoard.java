@@ -15,7 +15,7 @@ public class VirtualBoard extends JPanel {
 
         for (int j = 0; j < y; j++) {
             for (int i = 0; i < x; i++) {
-                organismArray[i][j] = new BoardArea(x, y, worldBoard);
+                organismArray[i][j] = new BoardArea(worldBoard);
                 add(organismArray[i][j]);
             }
         }

@@ -1,6 +1,7 @@
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
+@SuppressWarnings("WeakerAccess")
 public class ContextMenu extends JPopupMenu {
     private int menuLength;
     private JMenuItem[] menuLabel;

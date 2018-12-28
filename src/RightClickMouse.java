@@ -7,9 +7,7 @@ public class RightClickMouse extends MouseAdapter {
     private int y;
     private final WorldBoard worldBoard;
 
-    public RightClickMouse(int x, int y, WorldBoard worldBoard) {
-        this.x = x;
-        this.y = y;
+    public RightClickMouse(WorldBoard worldBoard) {
         this.worldBoard = worldBoard;
     }
 
@@ -24,10 +22,10 @@ public class RightClickMouse extends MouseAdapter {
     @Override
     public void mouseClicked(MouseEvent event) {
         if (MouseEvent.BUTTON3 == event.getButton()) {
-            this.setY(event.getX());
-            this.setX(event.getY());
+            this.setX(event.getX());
+            this.setY(event.getY());
             ContextMenu contextMenu = new ContextMenu(x, y, worldBoard);
-            contextMenu.show(event.getComponent(), event.getX(), event.getY());
+            contextMenu.show(event.getComponent(), x, y);
         }
     }
 }

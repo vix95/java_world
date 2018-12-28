@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 public class MyFrame extends JFrame implements ActionListener {
     private static final int WIDTH = 500;
     private static final int HEIGHT = 600;
+    private static final int WIDTHBOARD = 500;
+    private static final int HEIGHTBOARD = 500;
     private WorldBoard worldBoard;
     private final VirtualBoard worldArea;
 
@@ -28,7 +30,7 @@ public class MyFrame extends JFrame implements ActionListener {
         worldArea = new VirtualBoard(x, y, worldBoard);
         worldArea.setBackground(Color.white);
         worldArea.setLocation(0, 100);
-        worldArea.setPreferredSize(new Dimension(500, 500));
+        worldArea.setPreferredSize(new Dimension(WIDTHBOARD, HEIGHTBOARD));
         this.add(worldArea);
 
         newGame = new JButton("New Game");

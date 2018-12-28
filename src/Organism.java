@@ -7,23 +7,17 @@ public class Organism {
     private boolean move = true;
     private Coordinates coordinates;
     private boolean destroyed = false;
-    private World board;
+    private World world;
 
     public Organism(){}
 
-    public Organism(Coordinates coordinates, World board) {
-        this.age = 0;
-        this.coordinates = coordinates;
-        this.board = board;
-    }
-
-    public Organism(String name, int strong, int movement, Coordinates coordinates, World board) {
+    public Organism(String name, int strong, int movement, Coordinates coordinates, World world) {
         this.name = name;
         this.strong = strong;
         this.age = 0;
         this.movement = movement;
         this.coordinates = coordinates;
-        this.board = board;
+        this.world = world;
     }
 
     public String getName() {
@@ -80,13 +74,5 @@ public class Organism {
 
     public void setDestroyed(boolean destroyed) {
         this.destroyed = destroyed;
-    }
-
-    public World getBoard() {
-        return board;
-    }
-
-    public void setBoard(World board) {
-        this.board = board;
     }
 }

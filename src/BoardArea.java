@@ -6,8 +6,8 @@ import java.awt.Color;
 public class BoardArea extends JPanel {
     private JLabel label;
 
-    public BoardArea(int x, int y, WorldBoard worldBoard) {
-        RightClickMouse rightClickMouse = new RightClickMouse(x, y, worldBoard);
+    public BoardArea(WorldBoard worldBoard) {
+        RightClickMouse rightClickMouse = new RightClickMouse(worldBoard);
         addMouseListener(rightClickMouse);
         setBackground(Color.white);
         label = new JLabel();
