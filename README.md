@@ -4,7 +4,7 @@ An app that imitates the world with balance. Using *awt* and *swing* library. Im
 ## java_world.java
 Set world board size given in px - x, y. The autoscaler of the board is implemented. Can pass another size.
 
-## NyFrame.java
+## MyFrame.java
 Create the form. Parameters *WIDTH* and *HEIGHT* sets form size.
 
 ## RightClickMouse.java
@@ -17,10 +17,10 @@ Define organisms on context menu.
 Main class that contains parameters of all organisms.
 
 ## Animal.java, Plant.java
-Class extends Organism.java. Specified actions for group of organism.
+Extends Organism.java. Specified actions for group of organism.
 
 ## Grass.java, ...
-Class extends Animal.java or Plant.java. Specified actions for any kind of organism.
+Extends Animal.java or Plant.java. Specified actions for any kind of organism.
 
 ## World.java
 Defined java world! Parameters:
@@ -34,3 +34,15 @@ Also exists *addOrganism* and *drawWorld* method.
 
 ## Coordinates.java
 Class exists coordinates of organisms or world size. Contains *equals* method.
+
+## Board.java
+Board on form. Sets grid layout. Sets labels on board, clear board.
+
+## BoardArea.java
+Extends JPanel. Area on board. Coloring organisms, set label method and clear label method. Contains all Board operations.
+
+## WorldBoard.java
+Extends World.java.
+
+## NewOrganism.java
+Implements ActionListener. Creating virtual/temp organism.
