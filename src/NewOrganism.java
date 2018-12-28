@@ -1,7 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-@SuppressWarnings("WeakerAccess")
 public class NewOrganism implements ActionListener {
     private final String name;
     private final int x;

@@ -10,7 +10,7 @@ public class MyFrame extends JFrame implements ActionListener {
     private static final int HEIGHT = 600;
     private static final int WIDTHBOARD = 500;
     private static final int HEIGHTBOARD = 500;
-    private WorldBoard worldBoard;
+    private final WorldBoard worldBoard;
     private final Board worldArea;
 
     int turnCounter = 0;
@@ -18,8 +18,13 @@ public class MyFrame extends JFrame implements ActionListener {
     private JButton newGame;
     private JButton nextTurn;
 
+    private JLabel turnLabel;
+
     public MyFrame(int x, int y, WorldBoard worldBoard) {
         super("Java World");
+        this.worldBoard = worldBoard;
+
+        // frame settings
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setResizable(false);
@@ -31,14 +36,22 @@ public class MyFrame extends JFrame implements ActionListener {
         worldArea.setBackground(Color.white);
         worldArea.setLocation(0, 100);
         worldArea.setPreferredSize(new Dimension(WIDTHBOARD, HEIGHTBOARD));
-        this.add(worldArea);
+        this.getContentPane().add(worldArea);
 
+        // buttons
         newGame = new JButton("New Game");
         newGame.addActionListener(this);
-        getContentPane().add(BorderLayout.WEST, newGame);
+        this.getContentPane().add(newGame, FlowLayout.LEFT);
+
+        nextTurn = new JButton("Next Turn");
+        nextTurn.addActionListener(this);
+        this.getContentPane().add(nextTurn, FlowLayout.CENTER);
+
+        turnLabel = new JLabel("Day: " + turnCounter);
+        this.getContentPane().add(turnLabel, FlowLayout.RIGHT);
 
         JLabel credentials = new JLabel("Created by Pawel Labuda", JLabel.CENTER);
-        this.getContentPane().add(credentials);
+        this.getContentPane().add(credentials, FlowLayout.TRAILING);
     }
 
     public void setLabelOnArea(String label, int x, int y) {
@@ -50,8 +63,14 @@ public class MyFrame extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == newGame) {
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == newGame) {
+            turnCounter = 0;
+            worldBoard.newGame();
+        } else if (e.getSource() == nextTurn) {
+            turnCounter++;
+            turnLabel.setText("Day: " + turnCounter);
+            worldBoard.nextTurn();
         }
     }
 }

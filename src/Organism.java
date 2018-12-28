@@ -7,7 +7,7 @@ public class Organism {
     private boolean move = true;
     private Coordinates coordinates;
     private boolean destroyed = false;
-    private World world;
+    public World world;
 
     public Organism(){}
 
@@ -18,6 +18,14 @@ public class Organism {
         this.movement = movement;
         this.coordinates = coordinates;
         this.world = world;
+    }
+
+    public void doMove() {
+        this.setAge(this.getAge() + 1);
+    }
+
+    public void multiply() {
+
     }
 
     public String getName() {

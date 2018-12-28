@@ -1,6 +1,3 @@
-import java.util.Random;
-
-@SuppressWarnings("WeakerAccess")
 public class Plant extends Organism {
     public Plant(){}
 
