@@ -5,9 +5,8 @@ public class Organism {
     private int strength;
     private int age;
     private int movement;
-    private boolean move = true;
+    private boolean do_move = true;
     private Coordinates coordinates;
-    private boolean destroyed = false;
     public World world;
     private int young;
 
@@ -29,23 +28,46 @@ public class Organism {
         world.checkCollision(this);
     }
 
-    public void collision(Organism org1, Organism org2) {
-        if (org1.getName().equals(org2.getName())) {
-            multiply();
-            org1.setYoung(org1.getYoung() + 1);
-            org2.setYoung(org2.getYoung() + 1);
-        } else if (org1.getStrength() >= org2.getStrength()) {
-            org1.setStrength(org1.getStrength() + 1);
-            org2.setDestroyed(true);
-            this.world.organismArray.remove(org2);
-        } else {
-            org2.setStrength(org2.getStrength() + 1);
-            org1.setDestroyed(true);
-            this.world.organismArray.remove(org1);
-        }
+    public void collision(Organism another) {
+        if (this.getName().equals(another.getName())) {
+            this.increaseYoung();
+            another.increaseYoung();
+            this.multiply();
+        } else this.doFight(another);
+    }
+
+    public void doAction(Organism another) {
+    }
+
+    public void removeOrganism() {
+        world.organismArray.remove(this);
     }
 
     public void multiply() {
+    }
+
+    public void doFight(Organism another) {
+        if (this.getStrength() >= another.getStrength()) {
+            this.increaseStrength();
+            another.removeOrganism();
+            another.doAction(this);
+        } else {
+            another.increaseStrength();
+            this.removeOrganism();
+            this.doAction(another);
+        }
+    }
+
+    private void increaseYoung() {
+        this.setYoung(this.getYoung() + 1);
+    }
+
+    private void increaseStrength() {
+        this.setStrength(this.getStrength() + 1);
+    }
+
+    private void increaseAge() {
+        this.setAge(this.getAge() + 1);
     }
 
     public String getName() {
@@ -80,12 +102,12 @@ public class Organism {
         this.movement = movement;
     }
 
-    public boolean isMove() {
-        return move;
+    public boolean isDo_move() {
+        return do_move;
     }
 
-    public void setMove(boolean move) {
-        this.move = move;
+    public void setDo_move(boolean do_move) {
+        this.do_move = do_move;
     }
 
     public Coordinates getCoordinates() {
@@ -94,14 +116,6 @@ public class Organism {
 
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
-    }
-
-    public boolean isDestroyed() {
-        return destroyed;
-    }
-
-    public void setDestroyed(boolean destroyed) {
-        this.destroyed = destroyed;
     }
 
     public int getYoung() {
@@ -114,5 +128,20 @@ public class Organism {
 
     public String getShort_name() {
         return short_name;
+    }
+
+    @Override
+    public String toString() {
+        return "Organism{" +
+                "name='" + name + '\'' +
+                ", short_name='" + short_name + '\'' +
+                ", strength=" + strength +
+                ", age=" + age +
+                ", movement=" + movement +
+                ", do_move=" + do_move +
+                ", coordinates=" + coordinates +
+                ", world=" + world +
+                ", young=" + young +
+                '}';
     }
 }

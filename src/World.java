@@ -9,7 +9,7 @@ public class World {
     protected ArrayList<Organism> organismArray = new ArrayList<>();
     protected ArrayList<String> organismList = new ArrayList<>();
     protected String[] animalsArr = {"Sheep", "Wolf"};
-    protected String[] plantsArr = {"Grass"};
+    protected String[] plantsArr = {"Grass", "Muschroom"};
     protected int minOrganismQty = 8;
 
     public World(int x, int y) {
@@ -35,6 +35,10 @@ public class World {
                 newOrganism = new Wolf(coordinates, this);
                 break;
 
+            case "Muschroom":
+                newOrganism = new Muschroom(coordinates, this);
+                break;
+
                 default:
                     return null;
         }
@@ -47,9 +51,7 @@ public class World {
     public void drawWorld() {
         myFrame.clearSpecifiedField();
         organismArray.forEach((organism) -> {
-            if (!organism.isDestroyed()) {
-                myFrame.setLabelOnArea(organism.getShort_name(), organism.getCoordinates().x, organism.getCoordinates().y);
-            }
+            myFrame.setLabelOnArea(organism.getShort_name(), organism.getCoordinates().x, organism.getCoordinates().y);
         });
     }
 
@@ -78,6 +80,7 @@ public class World {
             do {
                 coordinates = new Coordinates(coordinates.x + (rand.nextInt(3) - 1),
                         coordinates.y + (rand.nextInt(3) - 1));
+
                 if (try_count-- == 0) {
                     coordinates = basicCoordinates;
                     break;
@@ -91,8 +94,8 @@ public class World {
 
     public void checkCollision(Organism organism) {
         for (Organism org : organismArray) {
-            if (organism.getCoordinates().equals(org.getCoordinates()) && !org.isDestroyed() && !organism.equals(org)) {
-                organism.collision(organism, org);
+            if (organism.getCoordinates().equals(org.getCoordinates()) && !organism.equals(org)) {
+                organism.collision(org);
                 break;
             }
         }

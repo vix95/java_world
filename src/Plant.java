@@ -5,10 +5,6 @@ public class Plant extends Organism {
         super(name, short_name, strong, movement, coordinates, board);
     }
 
-    public void multiply() {
-        super.multiply();
-    }
-
     public void doMove() {
         multiply();
         super.doMove();

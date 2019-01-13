@@ -31,7 +31,7 @@ public class WorldBoard extends World {
 
     public void nextTurn() {
         for (int i = 0; i < organismArray.size(); i++) {
-            if (!organismArray.get(i).isDestroyed()) organismArray.get(i).doMove();
+            organismArray.get(i).doMove();
         }
 
         //for (Organism organism : organismArray) {
