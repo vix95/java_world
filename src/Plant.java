@@ -1,7 +1,16 @@
 public class Plant extends Organism {
     public Plant(){}
 
-    public Plant(String name, int strong, int movement, Coordinates coordinates, World board) {
-        super(name, strong, movement, coordinates, board);
+    public Plant(String name, String short_name, int strong, int movement, Coordinates coordinates, World board) {
+        super(name, short_name, strong, movement, coordinates, board);
+    }
+
+    public void multiply() {
+        super.multiply();
+    }
+
+    public void doMove() {
+        multiply();
+        super.doMove();
     }
 }

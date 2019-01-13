@@ -1,6 +1,6 @@
-public class Sheep extends Animal {
-    public Sheep(Coordinates coordinates, World world) {
-        super("Sheep", "s", 1, 1, coordinates, world);
+public class Wolf extends Animal {
+    public Wolf(Coordinates coordinates, World world) {
+        super("Wolf", "w", 5, 1, coordinates, world);
     }
 
     public void multiply() {

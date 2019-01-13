@@ -24,6 +24,9 @@ public class BoardArea extends JPanel {
             case "s":
                 setBackground(Color.gray);
                 break;
+            case "w":
+                setBackground(Color.darkGray);
+                break;
         }
     }
 

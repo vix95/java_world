@@ -13,17 +13,30 @@ public class WorldBoard extends World {
 
         int organismsQty = rand.nextInt(20) + minOrganismQty;
         for (int i = 0; i < organismsQty; i++) {
-            this.addOrganism(organismList.get(rand.nextInt(organismList.size())),
-                    new Coordinates(rand.nextInt(size.x), rand.nextInt(size.y)));
+            Coordinates coordinates = new Coordinates(rand.nextInt(size.x), rand.nextInt(size.y));
+
+            boolean canSet = true;
+            for (Organism org : organismArray) {
+                if (coordinates.equals(org.getCoordinates())) {
+                    canSet = false;
+                    break;
+                }
+            }
+
+            if (canSet) this.addOrganism(organismList.get(rand.nextInt(organismList.size())), coordinates);
         }
 
         this.drawWorld();
     }
 
     public void nextTurn() {
-        for (Organism organism : organismArray) {
-            organism.doMove();
+        for (int i = 0; i < organismArray.size(); i++) {
+            if (!organismArray.get(i).isDestroyed()) organismArray.get(i).doMove();
         }
+
+        //for (Organism organism : organismArray) {
+        //    if (!organism.isDestroyed()) organism.doMove();
+        //}
 
         this.drawWorld();
     }

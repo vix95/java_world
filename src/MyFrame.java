@@ -66,6 +66,7 @@ public class MyFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newGame) {
             turnCounter = 0;
+            turnLabel.setText("Day: " + turnCounter);
             worldBoard.newGame();
         } else if (e.getSource() == nextTurn) {
             turnCounter++;

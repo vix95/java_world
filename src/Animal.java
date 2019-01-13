@@ -1,11 +1,11 @@
 public class Animal extends Organism {
-    public Animal(String name, int strong, int movement, Coordinates coordinates, World board) {
-        super(name, strong, movement, coordinates, board);
+    public Animal(String name, String short_name, int strength, int movement, Coordinates coordinates, World board) {
+        super(name, short_name, strength, movement, coordinates, board);
     }
 
-    @Override
     public void doMove() {
         Coordinates coordinates = world.randomCoordinates(this.getCoordinates(), this.getMovement());
         this.setCoordinates(coordinates);
+        super.doMove();
     }
 }
