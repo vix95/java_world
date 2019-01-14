@@ -3,7 +3,16 @@ An app that imitates the world with balance. Using *awt* and *swing* library. Im
 
 ## Organism description
 ###### Multiply
-**grass** - 25% chance
+####### Formula
+*count of organism / 10 + 1 - CONST*<br><br>
+**Example**<br>
+| organism count | int           | chance  |
+| -------------- | ------------- | ------- |
+| 1              | right-aligned | 100.00% |
+| 2              | centered      | 100.00% |
+| 3              | are neat      | 100.00% |
+<br><br>
+**grass** - CONST: 0<br>
 **muschroom** - 11% chance; 100% chance after kill another organism
 **sheep** - 30% chance when meet another sheep
 **wolf** - 25% chance when meet another wolf
@@ -12,7 +21,7 @@ An app that imitates the world with balance. Using *awt* and *swing* library. Im
 **grass** - nothing
 **mushroom** - kill another organism when they meet
 **sheep** - nothing
-**wolf** - aim to sheep when sheep population is greater than 20 pieces
+**wolf** - aim to sheep when sheep population is greater than 20 pieces, get extra one move
 
 #### java_world.java
 Set world board size given in px - x, y. The autoscaler of the board is implemented. Can pass another size.
