@@ -23,7 +23,13 @@ public class Board extends JPanel {
     }
 
     public void setLabelOnArea(String label, int x, int y) {
-        boardArray[x][y].setLabel(label);
+        try {
+            boardArray[x][y].setLabel(label);
+        }
+
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(e);
+        }
     }
 
     public void clearArea() {

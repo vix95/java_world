@@ -4,7 +4,7 @@ public class Animal extends Organism {
     }
 
     public void doMove() {
-        Coordinates coordinates = world.randomCoordinates(this.getCoordinates(), this.getMovement());
+        Coordinates coordinates = world.randomCoordinates(this.getCoordinates(), this.getMovement(), false);
         this.setCoordinates(coordinates);
         super.doMove();
     }

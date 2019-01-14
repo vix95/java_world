@@ -1,3 +1,5 @@
+import java.util.Random;
+
 @SuppressWarnings("WeakerAccess")
 public class Organism {
     private String name;
@@ -9,6 +11,8 @@ public class Organism {
     private Coordinates coordinates;
     public World world;
     private int young;
+    private boolean destroyed = false;
+    private boolean multiplied = false;
 
     public Organism(){}
 
@@ -26,9 +30,18 @@ public class Organism {
     public void doMove() {
         this.setAge(this.getAge() + 1);
         world.checkCollision(this);
+
+        if (movement > 0)
+            System.out.println("Move " + this.getName() + "(" + this.hashCode() + ")" + " on x: " +
+                    this.getCoordinates().x + "; y: " + this.getCoordinates().y);
     }
 
     public void collision(Organism another) {
+        System.out.println("Collision " + this.getName() + "(" + this.hashCode() + "; x: "
+                + this.getCoordinates().x + "; y: " + this.getCoordinates().y + ") with "
+                + another.getName() + "(" + another.hashCode() + "; x: "
+                + another.getCoordinates().x + "; y: " + another.getCoordinates().y + ")");
+
         if (this.getName().equals(another.getName())) {
             this.increaseYoung();
             another.increaseYoung();
@@ -39,21 +52,33 @@ public class Organism {
     public void doAction(Organism another) {
     }
 
-    public void removeOrganism() {
-        world.organismArray.remove(this);
+    public void multiply() {
+        if (this.multiplied) {
+            System.out.println("Multiply " + this.getName() + "(" + this.hashCode() + ")");
+            this.multiplied = false;
+        }
     }
 
-    public void multiply() {
+    public void doMultiply(int const_val) {
+        int chance = this.world.countOrganism(this.getName()) / 10 + 1 - const_val;
+        if (chance < 1) chance = 1;
+
+        Random rand = new Random();
+        if (rand.nextInt(chance) == 0) {
+            this.setMultiplied(true);
+            this.world.addToQueueOrganism(this.getName(),
+                    this.world.randomCoordinates(this.getCoordinates(), 1, true));
+        }
     }
 
     public void doFight(Organism another) {
         if (this.getStrength() >= another.getStrength()) {
             this.increaseStrength();
-            another.removeOrganism();
+            this.world.removeOrganism(another);
             another.doAction(this);
         } else {
             another.increaseStrength();
-            this.removeOrganism();
+            this.world.removeOrganism(this);
             this.doAction(another);
         }
     }
@@ -128,6 +153,22 @@ public class Organism {
 
     public String getShort_name() {
         return short_name;
+    }
+
+    public boolean isDestroyed() {
+        return destroyed;
+    }
+
+    public void setDestroyed(boolean destroyed) {
+        this.destroyed = destroyed;
+    }
+
+    public boolean isMultiplied() {
+        return multiplied;
+    }
+
+    public void setMultiplied(boolean multiplied) {
+        this.multiplied = multiplied;
     }
 
     @Override

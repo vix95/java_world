@@ -14,6 +14,18 @@ public class NewOrganism implements ActionListener {
         this.worldBoard = worldBoard;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         worldBoard.addOrganism(name, new Coordinates(x, y));

@@ -10,7 +10,9 @@ public class World {
     protected ArrayList<String> organismList = new ArrayList<>();
     protected String[] animalsArr = {"Sheep", "Wolf"};
     protected String[] plantsArr = {"Grass", "Muschroom"};
+    protected ArrayList<NewOrganism> queueSpawnOrganism = new ArrayList<>();
     protected int minOrganismQty = 8;
+    protected WorldBoard worldBoard;
 
     public World(int x, int y) {
         this.size = new Coordinates(x, y);
@@ -48,21 +50,47 @@ public class World {
         return newOrganism;
     }
 
+    public void addToQueueOrganism(String name, Coordinates coordinates) {
+        queueSpawnOrganism.add(new NewOrganism(name, coordinates.x, coordinates.y, worldBoard));
+    }
+
+    public void spawnOrganism() {
+        for (NewOrganism newOrganism : queueSpawnOrganism) {
+            addOrganism(newOrganism.getName(), new Coordinates(newOrganism.getX(), newOrganism.getY()));
+        }
+
+        queueSpawnOrganism.clear();
+    }
+
     public void drawWorld() {
         myFrame.clearSpecifiedField();
         organismArray.forEach((organism) -> {
-            myFrame.setLabelOnArea(organism.getShort_name(), organism.getCoordinates().x, organism.getCoordinates().y);
+            if (!organism.isDestroyed()) {
+                myFrame.setLabelOnArea(organism.getShort_name(), organism.getCoordinates().x, organism.getCoordinates().y);
+            }
         });
+
+        this.spawnOrganism();
     }
 
     public boolean onArea(Coordinates coordinates) {
         return coordinates.x >= 0 && coordinates.x < size.x && coordinates.y >= 0 && coordinates.y < size.y;
     }
 
+    public boolean freeArea(Coordinates coordinates, boolean spawn) {
+        for (Organism organism : organismArray) {
+            if (!organism.isDestroyed() && spawn) {
+                if (coordinates.equals(organism.getCoordinates())) return false;
+            }
+        }
+
+        return true;
+    }
+
     public int countOrganism(String name) {
         int count = 0;
-        for (Organism org : organismArray) {
-            if (org.getName().equals(name)) {
+        for (Organism organism : organismArray) {
+            if (organism.getName().equals(name) && !organism.isDestroyed()) {
                 count++;
             }
         }
@@ -70,7 +98,31 @@ public class World {
         return count;
     }
 
-    public Coordinates randomCoordinates(Coordinates basicCoordinates, int movement) {
+    public void removeOrganism(Organism organism) {
+        //this.organismArray.remove(organism);
+        organism.setDestroyed(true);
+    }
+
+    public Organism getNearestOrganism(Coordinates coordinates) {
+        Organism nerest_organism = null;
+
+        for (Organism organism : organismArray) {
+            if (organism.getName().equals("Sheep") && !organism.isDestroyed()) {
+                if (nerest_organism == null) nerest_organism = organism;
+
+                if ((Math.abs(coordinates.x - organism.getCoordinates().x)
+                        <= Math.abs(coordinates.x - nerest_organism.getCoordinates().x))
+                        && (Math.abs(coordinates.x - organism.getCoordinates().x)
+                        <= Math.abs(coordinates.x - nerest_organism.getCoordinates().x))) {
+                    nerest_organism = organism;
+                }
+            }
+        }
+
+        return nerest_organism;
+    }
+
+    public Coordinates randomCoordinates(Coordinates basicCoordinates, int movement, boolean spawn) {
         Random rand = new Random();
         Coordinates coordinates = new Coordinates(basicCoordinates.x, basicCoordinates.y);
 
@@ -85,7 +137,7 @@ public class World {
                     coordinates = basicCoordinates;
                     break;
                 }
-            } while (!onArea(coordinates));
+            } while (!onArea(coordinates) || !freeArea(coordinates, spawn));
             moveRemaining--;
         }
 
@@ -94,7 +146,8 @@ public class World {
 
     public void checkCollision(Organism organism) {
         for (Organism org : organismArray) {
-            if (organism.getCoordinates().equals(org.getCoordinates()) && !organism.equals(org)) {
+            if (organism.getCoordinates().equals(org.getCoordinates())
+                    && !organism.equals(org) && !organism.isDestroyed()) {
                 organism.collision(org);
                 break;
             }

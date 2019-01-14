@@ -4,17 +4,15 @@ public class Sheep extends Animal {
     }
 
     public void doMove() {
-        if (this.getAge() > 50) {
-            this.removeOrganism();
+        if (this.getAge() > 500) {
+            this.world.removeOrganism(this);
         }
 
         super.doMove();
     }
 
     public void multiply() {
-        if (this.world.countOrganism(this.getName()) < 21) {
-            this.world.addOrganism(this.getName(), this.getCoordinates());
-            super.multiply();
-        }
+        super.doMultiply(0);
+        super.multiply();
     }
 }

@@ -4,7 +4,7 @@ An app that imitates the world with balance. Using *awt* and *swing* library. Im
 ## Organism description
 ###### Multiply
 ####### Formula
-*count of organism / 10 + 1 - CONST*<br><br>
+*organism count / 10 + 1 - CONST*<br><br>
 **Example**<br>
 <table>
   <tr>
@@ -213,15 +213,21 @@ An app that imitates the world with balance. Using *awt* and *swing* library. Im
   </tr>
 </table>
 
-**grass** - CONST: 0<br>
-**muschroom** - 11% chance; 100% chance after kill another organism
+**grass** - CONST: 1
+<br>
+**muschroom** - CONST: -20; 100% chance after kill another organism; dying after 10 moves; can spawn everytime
+<br>
 **sheep** - 30% chance when meet another sheep
+<br>
 **wolf** - 25% chance when meet another wolf
 
 ###### Actions
 **grass** - nothing
+<br>
 **mushroom** - kill another organism when they meet
+<br>
 **sheep** - nothing
+<br>
 **wolf** - aim to sheep when sheep population is greater than 20 pieces, get extra one move
 
 #### java_world.java

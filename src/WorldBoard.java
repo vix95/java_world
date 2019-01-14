@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
 @SuppressWarnings("WeakerAccess")
 public class WorldBoard extends World {
@@ -30,13 +31,15 @@ public class WorldBoard extends World {
     }
 
     public void nextTurn() {
-        for (int i = 0; i < organismArray.size(); i++) {
-            organismArray.get(i).doMove();
-        }
-
-        //for (Organism organism : organismArray) {
-        //    if (!organism.isDestroyed()) organism.doMove();
+        //for (int i = 0; i < organismArray.size(); i++) {
+        //    organismArray.get(i).doMove();
         //}
+
+        for (Organism organism : organismArray) {
+            if (!organism.isDestroyed()) {
+                organism.doMove();
+            }
+        }
 
         this.drawWorld();
     }
