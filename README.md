@@ -4,214 +4,43 @@ An app that imitates the world with balance. Using *awt* and *swing* library. Im
 ## Organism description
 ###### Multiply
 ####### Formula
-*organism count / 10 + 1 - CONST*<br><br>
+*organism count / 10 + 1 + CONST*<br><br>
 **Example**<br>
+<style type="text/css">
+	table.tableizer-table {
+		font-size: 12px;
+		border: 1px solid #CCC; 
+		font-family: Arial, Helvetica, sans-serif;
+	} 
+	.tableizer-table td {
+		padding: 4px;
+		margin: 3px;
+		border: 1px solid #CCC;
+	}
+	.tableizer-table th {
+		background-color: #104E8B; 
+		color: #FFF;
+		font-weight: bold;
+	}
+</style>
 <table>
-  <tr>
-    <th>organism count</th>
-    <th>CONST</th>
-    <th>int</th>
-    <th>chance</th>
-    <th>CONST</th>
-    <th>int</th>
-    <th>chance</th>
-    <th>CONST</th>
-    <th>int</th>
-    <th>chance</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>0</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-    <td>1</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-    <td>2</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>0</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-    <td>1</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-    <td>2</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>0</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-    <td>1</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-    <td>2</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-  </tr>
-  <tr>
-    <td>8</td>
-    <td>0</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-    <td>1</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-    <td>2</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-  </tr>
-  <tr>
-    <td>9</td>
-    <td>0</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-    <td>1</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-    <td>2</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-  </tr>
-  <tr>
-    <td>10</td>
-    <td>0</td>
-    <td>2</td>
-    <td><b>50.00%</b></td>
-    <td>1</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-    <td>2</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-  </tr>
-  <tr>
-    <td>20</td>
-    <td>0</td>
-    <td>3</td>
-    <td><b>33.33%</b></td>
-    <td>1</td>
-    <td>2</td>
-    <td><b>50.00%</b></td>
-    <td>2</td>
-    <td>1</td>
-    <td><b>100.00%</b></td>
-  </tr>
-  <tr>
-    <td>30</td>
-    <td>0</td>
-    <td>4</td>
-    <td><b>25.00%</b></td>
-    <td>1</td>
-    <td>3</td>
-    <td><b>33.33%</b></td>
-    <td>2</td>
-    <td>2</td>
-    <td><b>50.00%</b></td>
-  </tr>
-  <tr>
-    <td>40</td>
-    <td>0</td>
-    <td>5</td>
-    <td><b>20.00%</b></td>
-    <td>1</td>
-    <td>4</td>
-    <td><b>25.00%</b></td>
-    <td>2</td>
-    <td>3</td>
-    <td><b>33.33%</b></td>
-  </tr>
-  <tr>
-    <td>50</td>
-    <td>0</td>
-    <td>6</td>
-    <td><b>16.67%</b></td>
-    <td>1</td>
-    <td>5</td>
-    <td><b>20.00%</b></td>
-    <td>2</td>
-    <td>4</td>
-    <td><b>25.00%</b></td>
-  </tr>
-  <tr>
-    <td>60</td>
-    <td>0</td>
-    <td>7</td>
-    <td><b>14.29%</b></td>
-    <td>1</td>
-    <td>6</td>
-    <td><b>16.67%</b></td>
-    <td>2</td>
-    <td>5</td>
-    <td><b>20.00%</b></td>
-  </tr>
-  <tr>
-    <td>70</td>
-    <td>0</td>
-    <td>8</td>
-    <td><b>12.50%</b></td>
-    <td>1</td>
-    <td>7</td>
-    <td><b>14.29%</b></td>
-    <td>2</td>
-    <td>6</td>
-    <td><b>16.67%</b></td>
-  </tr>
-  <tr>
-    <td>80</td>
-    <td>0</td>
-    <td>9</td>
-    <td><b>11.11%</b></td>
-    <td>1</td>
-    <td>8</td>
-    <td><b>12.50%</b></td>
-    <td>2</td>
-    <td>7</td>
-    <td><b>14.29%</b></td>
-  </tr>
-  <tr>
-    <td>90</td>
-    <td>0</td>
-    <td>10</td>
-    <td><b>10.00%</b></td>
-    <td>1</td>
-    <td>9</td>
-    <td><b>11.11%</b></td>
-    <td>2</td>
-    <td>8</td>
-    <td><b>12.50%</b></td>
-  </tr>
-  <tr>
-    <td>100</td>
-    <td>0</td>
-    <td>11</td>
-    <td><b>9.09%</b></td>
-    <td>1</td>
-    <td>10</td>
-    <td><b>10.00%</b></td>
-    <td>2</td>
-    <td>9</td>
-    <td><b>11.11%</b></td>
-  </tr>
-  <tr>
-    <td>110</td>
-    <td>0</td>
-    <td>12</td>
-    <td><b>8.33%</b></td>
-    <td>1</td>
-    <td>11</td>
-    <td><b>9.09%</b></td>
-    <td>2</td>
-    <td>10</td>
-    <td><b>10.00%</b></td>
-  </tr>
-</table>
+<thead><tr><th>organism count</th><th>formula (int)</th><th>CONST</th><th>chance</th><th>formula (int)</th><th>CONST</th><th>chance</th><th>formula (int)</th><th>CONST</th><th>chance</th></tr></thead><tbody>
+ <tr><td>1</td><td>1</td><td>0</td><td><b>100.00%</b></td><td>2</td><td>1</td><td><b>50.00%</b></td><td>6</td><td>5</td><td><b>16.67%</b></td></tr>
+ <tr><td>2</td><td>1</td><td>0</td><td><b>100.00%</b></td><td>2</td><td>1</td><td><b>50.00%</b></td><td>6</td><td>5</td><td><b>16.67%</b></td></tr>
+ <tr><td>3</td><td>1</td><td>0</td><td><b>100.00%</b></td><td>2</td><td>1</td><td><b>50.00%</b></td><td>6</td><td>5</td><td><b>16.67%</b></td></tr>
+ <tr><td>9</td><td>1</td><td>0</td><td><b>100.00%</b></td><td>2</td><td>1</td><td><b>50.00%</b></td><td>6</td><td>5</td><td><b>16.67%</b></td></tr>
+ <tr><td>10</td><td>2</td><td>0</td><td><b>50.00%</b></td><td>3</td><td>1</td><td><b>33.33%</b></td><td>7</td><td>5</td><td><b>14.29%</b></td></tr>
+ <tr><td>20</td><td>3</td><td>0</td><td><b>33.33%</b></td><td>4</td><td>1</td><td><b>25.00%</b></td><td>8</td><td>5</td><td><b>12.50%</b></td></tr>
+ <tr><td>30</td><td>4</td><td>0</td><td><b>25.00%</b></td><td>5</td><td>1</td><td><b>20.00%</b></td><td>9</td><td>5</td><td><b>11.11%</b></td></tr>
+ <tr><td>40</td><td>5</td><td>0</td><td><b>20.00%</b></td><td>6</td><td>1</td><td><b>16.67%</b></td><td>10</td><td>5</td><td><b>10.00%</b></td></tr>
+ <tr><td>50</td><td>6</td><td>0</td><td><b>16.67%</b></td><td>7</td><td>1</td><td><b>14.29%</b></td><td>11</td><td>5</td><td><b>9.09%</b></td></tr>
+ <tr><td>60</td><td>7</td><td>0</td><td><b>14.29%</b></td><td>8</td><td>1</td><td><b>12.50%</b></td><td>12</td><td>5</td><td><b>8.33%</b></td></tr>
+ <tr><td>70</td><td>8</td><td>0</td><td><b>12.50%</b></td><td>9</td><td>1</td><td><b>11.11%</b></td><td>13</td><td>5</td><td><b>7.69%</b></td></tr>
+ <tr><td>80</td><td>9</td><td>0</td><td><b>11.11%</b></td><td>10</td><td>1</td><td><b>10.00%</b></td><td>14</td><td>5</td><td><b>7.14%</b></td></tr>
+ <tr><td>90</td><td>10</td><td>0</td><td><b>10.00%</b></td><td>11</td><td>1</td><td><b>9.09%</b></td><td>15</td><td>5</td><td><b>6.67%</b></td></tr>
+ <tr><td>100</td><td>11</td><td>0</td><td><b>9.09%</b></td><td>12</td><td>1</td><td><b>8.33%</b></td><td>16</td><td>5</td><td><b>6.25%</b></td></tr>
+ <tr><td>110</td><td>12</td><td>0</td><td><b>8.33%</b></td><td>13</td><td>1</td><td><b>7.69%</b></td><td>17</td><td>5</td><td><b>5.88%</b></td></tr>
+</tbody></table>
 
 **grass** - CONST: 1
 <br>
