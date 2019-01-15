@@ -8,6 +8,7 @@ public class Organism {
     private int age;
     private int movement;
     private boolean do_move = true;
+    private int freeze;
     private Coordinates coordinates;
     public World world;
     private int young;
@@ -25,15 +26,20 @@ public class Organism {
         this.coordinates = coordinates;
         this.world = world;
         this.young = 0;
+        this.freeze = 0;
     }
 
     public void doMove() {
-        this.setAge(this.getAge() + 1);
-        world.checkCollision(this);
+        this.increaseAge();
+        this.world.checkCollision(this);
 
-        if (movement > 0)
-            System.out.println("Move " + this.getName() + "(" + this.hashCode() + ")" + " on x: " +
-                    this.getCoordinates().x + "; y: " + this.getCoordinates().y);
+        if (this.isDo_move()) {
+            if (this.movement > 0)
+                System.out.println("Move " + this.getName() + "(" + this.hashCode() + ")" + " on x: " +
+                        this.getCoordinates().x + "; y: " + this.getCoordinates().y);
+        } else {
+            if (this.freeze-- == 0) this.do_move = true;
+        }
     }
 
     public void collision(Organism another) {
@@ -60,7 +66,7 @@ public class Organism {
     }
 
     public void doMultiply(int const_val) {
-        int chance = this.world.countOrganism(this.getName()) / 10 + 1 - const_val;
+        int chance = this.world.countOrganism(this.getName()) / 10 + 1 + const_val;
         if (chance < 1) chance = 1;
 
         Random rand = new Random();
@@ -83,6 +89,10 @@ public class Organism {
         }
     }
 
+    public void doFreeze(int turns) {
+        this.freeze = turns;
+    }
+
     private void increaseYoung() {
         this.setYoung(this.getYoung() + 1);
     }
@@ -97,10 +107,6 @@ public class Organism {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getStrength() {
@@ -123,16 +129,8 @@ public class Organism {
         return movement;
     }
 
-    public void setMovement(int movement) {
-        this.movement = movement;
-    }
-
     public boolean isDo_move() {
         return do_move;
-    }
-
-    public void setDo_move(boolean do_move) {
-        this.do_move = do_move;
     }
 
     public Coordinates getCoordinates() {
@@ -161,10 +159,6 @@ public class Organism {
 
     public void setDestroyed(boolean destroyed) {
         this.destroyed = destroyed;
-    }
-
-    public boolean isMultiplied() {
-        return multiplied;
     }
 
     public void setMultiplied(boolean multiplied) {

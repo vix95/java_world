@@ -21,7 +21,7 @@ public class World {
         organismList.addAll(Arrays.asList(plantsArr));
     }
 
-    public Organism addOrganism(String name, Coordinates coordinates) {
+    public void addOrganism(String name, Coordinates coordinates) {
         Organism newOrganism;
 
         switch (name) {
@@ -42,12 +42,10 @@ public class World {
                 break;
 
                 default:
-                    return null;
+                    newOrganism = null;
         }
 
         organismArray.add(newOrganism);
-
-        return newOrganism;
     }
 
     public void addToQueueOrganism(String name, Coordinates coordinates) {
@@ -99,7 +97,6 @@ public class World {
     }
 
     public void removeOrganism(Organism organism) {
-        //this.organismArray.remove(organism);
         organism.setDestroyed(true);
     }
 
@@ -130,14 +127,18 @@ public class World {
         while (moveRemaining > 0) {
             int try_count = 10;  // block for infinity loop
             do {
-                coordinates = new Coordinates(coordinates.x + (rand.nextInt(3) - 1),
-                        coordinates.y + (rand.nextInt(3) - 1));
+                for (int i = 0; i < 5; i++) {
+                    coordinates = new Coordinates(coordinates.x + (rand.nextInt(3) - 1),
+                            coordinates.y + (rand.nextInt(3) - 1));
+
+                    if (freeArea(coordinates, spawn)) break;
+                }
 
                 if (try_count-- == 0) {
                     coordinates = basicCoordinates;
                     break;
                 }
-            } while (!onArea(coordinates) || !freeArea(coordinates, spawn));
+            } while (!onArea(coordinates));
             moveRemaining--;
         }
 

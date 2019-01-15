@@ -1,3 +1,4 @@
+@SuppressWarnings("WeakerAccess")
 public class Muschroom extends Plant {
     public Muschroom(Coordinates coordinates, World world) {
         super("Muschroom", "m", 0, 0, coordinates, world);
@@ -12,7 +13,7 @@ public class Muschroom extends Plant {
     }
 
     public void multiply() {
-        super.doMultiply(-20);
+        super.doMultiply(4);
         super.multiply();
     }
 

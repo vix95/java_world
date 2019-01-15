@@ -28,7 +28,7 @@ public class Board extends JPanel {
         }
 
         catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(e);
+            System.err.println(e.getMessage());
         }
     }
 

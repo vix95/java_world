@@ -8,7 +8,7 @@ public class Grass extends Plant {
     }
 
     public void multiply() {
-        super.doMultiply(-20);
+        super.doMultiply(5);
         super.multiply();
     }
 }
