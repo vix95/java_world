@@ -6,23 +6,6 @@ An app that imitates the world with balance. Using *awt* and *swing* library. Im
 ##### Formula
 *organism count / 10 + 1 + CONST*<br><br>
 **Example**<br>
-<style type="text/css">
-	table.tableizer-table {
-		font-size: 12px;
-		border: 1px solid #CCC; 
-		font-family: Arial, Helvetica, sans-serif;
-	} 
-	.tableizer-table td {
-		padding: 4px;
-		margin: 3px;
-		border: 1px solid #CCC;
-	}
-	.tableizer-table th {
-		background-color: #104E8B; 
-		color: #FFF;
-		font-weight: bold;
-	}
-</style>
 <table>
 <thead><tr><th>organism count</th><th>formula (int)</th><th>CONST</th><th>chance</th><th>formula (int)</th><th>CONST</th><th>chance</th><th>formula (int)</th><th>CONST</th><th>chance</th></tr></thead><tbody>
  <tr><td>1</td><td>1</td><td>0</td><td><b>100.00%</b></td><td>2</td><td>1</td><td><b>50.00%</b></td><td>6</td><td>5</td><td><b>16.67%</b></td></tr>
