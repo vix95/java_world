@@ -13,7 +13,7 @@ public class Muschroom extends Plant {
     }
 
     public void multiply() {
-        super.doMultiply(4);
+        super.doMultiply(20);
         super.multiply();
     }
 
