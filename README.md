@@ -25,13 +25,15 @@ An app that imitates the world with balance. Using *awt* and *swing* library. Im
  <tr><td>110</td><td>12</td><td>0</td><td><b>8.33%</b></td><td>13</td><td>1</td><td><b>7.69%</b></td><td>17</td><td>5</td><td><b>5.88%</b></td></tr>
 </tbody></table>
 
-**grass** - CONST: 5
+**grass** - CONST: 15
 <br>
-**muschroom** - CONST: 4; 100% chance after kill another organism; dying after 10 moves; can spawn everytime
+**muschroom** - CONST: 20; 100% chance after kill another organism; dying after 10 moves; can spawn everytime
 <br>
 **sheep** - CONST: 0; when meet another sheep
 <br>
-**wolf** - CONST: 2; when meet another wolf
+**wolf** - CONST: 1; when meet another wolf
+<br>
+**bear** - CONST: 2
 
 ###### Actions
 **grass** - nothing
@@ -41,9 +43,24 @@ An app that imitates the world with balance. Using *awt* and *swing* library. Im
 **sheep** - nothing
 <br>
 **wolf** - aim to sheep when sheep population is greater than 20 pieces, get extra one move; does not move after eating a sheep for 1 turn
+<br>
+**bear** - nothing
+
+###### Stats
+**grass** - strength: 0, movement: 0, life: 400 days
+<br>
+**mushroom** - strength: 0, movement: 0, life: 10 days
+<br>
+**sheep** - strength: 0, movement: 1, life: 500 days
+<br>
+**wolf** - strength: 5, movement: 2, life: 800 days
+<br>
+**bear** - strength: 20, movement: 1, life: 1200 days
 
 #### java_world.java
 Set world board size given in px - x, y. The autoscaler of the board is implemented. Can pass another size.
+<br>
+**autoplay** - auto play mode; **TRUE/FALSE**
 
 #### MyFrame.java
 Create the form. Parameters *WIDTH* and *HEIGHT* sets form size.
@@ -65,9 +82,21 @@ Extends Animal.java or Plant.java. Specified actions for any kind of organism.
 
 #### World.java
 Defined java world! Parameters:
-*size* - size of world
-*organismArray* - array of organism at world
-*myFrame* - form
+<br>
+**size** - size of world
+<br>
+**organismArray** - array of organism at world
+<br>
+**animalsArr** - array of animals
+<br>
+**plantsArr** - array of plants
+<br>
+**queueSpawnOrganism** - array for organism which will be spawned
+<br>
+**myFrame** - form
+<br>
+**minOrganismQty** - the minimum number of organisms that will be spawned
+<br>
 
 Also exists *addOrganism* and *drawWorld* method.
 
