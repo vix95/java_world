@@ -1,7 +1,7 @@
 @SuppressWarnings("WeakerAccess")
 public class Wolf extends Animal {
     public Wolf(Coordinates coordinates, World world) {
-        super("Wolf", "w", 5, 1, coordinates, world);
+        super("Wolf", "w", 5, 2, coordinates, world);
     }
 
     public void doMove() {
@@ -41,7 +41,7 @@ public class Wolf extends Animal {
     }
 
     public void multiply() {
-        super.doMultiply(2);
+        super.doMultiply(1);
         super.multiply();
     }
 }

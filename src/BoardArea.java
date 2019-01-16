@@ -19,16 +19,19 @@ public class BoardArea extends JPanel {
 
         switch (str) {
             case "g":
-                setBackground(Color.green); break;
+                setBackground(new Color(0,204,0)); break;
 
             case "s":
-                setBackground(Color.gray); break;
+                setBackground(new Color(153,153,153)); break;
 
             case "w":
-                setBackground(Color.darkGray); break;
+                setBackground(new Color(51,51,51)); break;
 
             case "m":
-                setBackground(Color.red); break;
+                setBackground(new Color(255,0,0)); break;
+
+            case "b":
+                setBackground(new Color(153,102,0)); break;
         }
     }
 

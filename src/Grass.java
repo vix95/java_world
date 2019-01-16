@@ -4,11 +4,15 @@ public class Grass extends Plant {
     }
 
     public void doMove() {
+        if (this.getAge() > 400) {
+            this.world.removeOrganism(this);
+        }
+
         super.doMove();
     }
 
     public void multiply() {
-        super.doMultiply(10);
+        super.doMultiply(15);
         super.multiply();
     }
 }

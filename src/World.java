@@ -8,10 +8,10 @@ public class World {
     protected MyFrame myFrame;
     protected ArrayList<Organism> organismArray = new ArrayList<>();
     protected ArrayList<String> organismList = new ArrayList<>();
-    protected String[] animalsArr = {"Sheep", "Wolf"};
+    protected String[] animalsArr = {"Sheep", "Wolf", "Bear"};
     protected String[] plantsArr = {"Grass", "Muschroom"};
     protected ArrayList<NewOrganism> queueSpawnOrganism = new ArrayList<>();
-    protected int minOrganismQty = 8;
+    protected int minOrganismQty = 60;
     protected WorldBoard worldBoard;
 
     public World(int x, int y) {
@@ -39,6 +39,10 @@ public class World {
 
             case "Muschroom":
                 newOrganism = new Muschroom(coordinates, this);
+                break;
+
+            case "Bear":
+                newOrganism = new Bear(coordinates, this);
                 break;
 
                 default:

@@ -34,19 +34,19 @@ public class Organism {
         this.world.checkCollision(this);
 
         if (this.isDo_move()) {
-            if (this.movement > 0)
-                System.out.println("Move " + this.getName() + "(" + this.hashCode() + ")" + " on x: " +
-                        this.getCoordinates().x + "; y: " + this.getCoordinates().y);
+            //if (this.movement > 0)
+                //System.out.println("Move " + this.getName() + "(" + this.hashCode() + ")" + " on x: " +
+                //        this.getCoordinates().x + "; y: " + this.getCoordinates().y);
         } else {
             if (this.freeze-- == 0) this.do_move = true;
         }
     }
 
     public void collision(Organism another) {
-        System.out.println("Collision " + this.getName() + "(" + this.hashCode() + "; x: "
-                + this.getCoordinates().x + "; y: " + this.getCoordinates().y + ") with "
-                + another.getName() + "(" + another.hashCode() + "; x: "
-                + another.getCoordinates().x + "; y: " + another.getCoordinates().y + ")");
+        //System.out.println("Collision " + this.getName() + "(" + this.hashCode() + "; x: "
+        //        + this.getCoordinates().x + "; y: " + this.getCoordinates().y + ") with "
+        //        + another.getName() + "(" + another.hashCode() + "; x: "
+        //        + another.getCoordinates().x + "; y: " + another.getCoordinates().y + ")");
 
         if (this.getName().equals(another.getName())) {
             this.increaseYoung();
@@ -60,7 +60,7 @@ public class Organism {
 
     public void multiply() {
         if (this.multiplied) {
-            System.out.println("Multiply " + this.getName() + "(" + this.hashCode() + ")");
+            //System.out.println("Multiply " + this.getName() + "(" + this.hashCode() + ")");
             this.multiplied = false;
         }
     }

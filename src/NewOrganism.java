@@ -1,6 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("WeakerAccess")
 public class NewOrganism implements ActionListener {
     private final String name;
     private final int x;
@@ -28,7 +29,7 @@ public class NewOrganism implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        worldBoard.addOrganism(name, new Coordinates(x, y));
+        worldBoard.addToQueueOrganism(name, new Coordinates(x, y));
         worldBoard.drawWorld();
         System.out.println("Create " + this);
     }

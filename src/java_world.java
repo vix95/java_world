@@ -1,17 +1,20 @@
 public class java_world {
     public static void main(String[] args) {
         WorldBoard worldBoard = new WorldBoard(50, 50);
+        boolean autoplay = true;
 
         worldBoard.newGame();
 
-        for (int i = 0; i < 100; i++) {
-            worldBoard.nextTurn();
+        if (autoplay) {
+            do {
+                worldBoard.myFrame.actionNextTurn();
 
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } while (true);
         }
     }
 }
