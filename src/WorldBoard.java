@@ -30,15 +30,27 @@ public class WorldBoard extends World {
     }
 
     public void nextTurn() {
-        //for (int i = 0; i < organismArray.size(); i++) {
-        //    organismArray.get(i).doMove();
-        //}
-
-        for (Organism organism : organismArray) {
-            if (!organism.isDestroyed()) {
-                organism.doMove();
-            }
+        for (int i = 0; i < organismArray.size(); i++) {
+            if (!organismArray.get(i).isDestroyed())
+                organismArray.get(i).doMove();
         }
+
+        // remove destroyed organisms
+        int i = 0;
+        while (i != organismArray.size()) {
+            if (organismArray.get(i).isDestroyed()) {
+                organismArray.remove(i);
+                i--;
+            }
+
+            i++;
+        }
+
+//        for (Organism organism : organismArray) {
+//            if (!organism.isDestroyed()) {
+//                organism.doMove();
+//            }
+//        }
 
         this.drawWorld();
     }

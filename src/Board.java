@@ -24,7 +24,8 @@ public class Board extends JPanel {
 
     public void setLabelOnArea(String label, int x, int y) {
         try {
-            boardArray[x][y].setLabel(label);
+            if ((x >= 0 && x < this.x) && (y >= 0 && y < this.y))
+                boardArray[x][y].setLabel(label);
         }
 
         catch (ArrayIndexOutOfBoundsException e) {
